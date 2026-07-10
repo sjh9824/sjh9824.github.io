@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JaeHyuk Son — AI Research Engineer specializing in computer vision, biomedical signal processing, and remote physiological measurement." />
+  <title>JaeHyuk Son | AI Research Engineer</title>
+  <style>
+    :root{
+      --bg:#f7f7f5;
+      --surface:#ffffff;
+      --text:#17181a;
+      --muted:#666a73;
+      --line:#dedfdf;
+      --accent:#2457d6;
+      --accent-soft:#eef3ff;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  "Noto Sans KR", Arial, sans-serif;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit}
+    .container{width:min(calc(100% - 40px), var(--max)); margin:0 auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(247,247,245,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      font-size:15px;
+      font-weight:750;
+      letter-spacing:-.01em;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .nav-links a{
+      text-decoration:none;
+    }
+    .nav-links a:hover{color:var(--text)}
+
+    main{padding-bottom:72px}
+
+    .hero{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:56px;
+      align-items:start;
+      padding:88px 0 72px;
+      border-bottom:1px solid var(--line);
+    }
+    .portrait{
+      width:240px;
+      aspect-ratio:3 / 4;
+      object-fit:cover;
+      object-position:center top;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .eyebrow{
+      margin:0 0 12px;
+      color:var(--accent);
+      font-size:13px;
+      font-weight:750;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(42px, 6vw, 72px);
+      line-height:1.02;
+      letter-spacing:-.055em;
+      font-weight:780;
+    }
+    .role{
+      margin:18px 0 0;
+      font-size:clamp(20px, 2.4vw, 28px);
+      line-height:1.35;
+      letter-spacing:-.025em;
+      color:#33363c;
+      font-weight:620;
+    }
+    .intro{
+      max-width:760px;
+      margin:24px 0 0;
+      color:var(--muted);
+      font-size:17px;
+    }
+    .contacts{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:30px;
+    }
+    .contact{
+      display:inline-flex;
+      align-items:center;
+      min-height:40px;
+      padding:0 14px;
+      border:1px solid var(--line);
+      background:var(--surface);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:620;
+    }
+    .contact.primary{
+      color:#fff;
+      background:var(--text);
+      border-color:var(--text);
+    }
+    .contact:hover{border-color:#a8aab0}
+    .contact.primary:hover{background:#303238}
+
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      margin:0;
+      border-bottom:1px solid var(--line);
+    }
+    .metric{
+      padding:28px 18px 27px;
+      border-right:1px solid var(--line);
+    }
+    .metric:first-child{padding-left:0}
+    .metric:last-child{border-right:0}
+    .metric strong{
+      display:block;
+      font-size:30px;
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+    .metric span{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    section{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:56px;
+      padding:68px 0;
+      border-bottom:1px solid var(--line);
+      scroll-margin-top:80px;
+    }
+    .section-label h2{
+      margin:0;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+    .section-label p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .stack{display:grid; gap:0}
+    .item{
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:28px;
+      padding:0 0 30px;
+      margin:0 0 30px;
+      border-bottom:1px solid var(--line);
+    }
+    .item:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+      margin-bottom:0;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .meta b{
+      display:block;
+      color:var(--text);
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .item h3{
+      margin:0;
+      font-size:20px;
+      line-height:1.4;
+      letter-spacing:-.025em;
+    }
+    .item p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .item ul{
+      margin:12px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .item li+li{margin-top:4px}
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:14px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:4px 9px;
+      background:var(--accent-soft);
+      color:#244b9c;
+      font-size:12px;
+      font-weight:650;
+      border-radius:999px;
+    }
+    .result{
+      display:inline-block;
+      margin-top:14px;
+      padding:7px 10px;
+      border-left:3px solid var(--accent);
+      background:#fff;
+      font-size:13px;
+      font-weight:680;
+    }
+
+    .pub{
+      display:grid;
+      grid-template-columns:78px 1fr;
+      gap:22px;
+      padding:0 0 25px;
+      margin:0 0 25px;
+      border-bottom:1px solid var(--line);
+    }
+    .pub:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+    .year{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+    .pub h3{
+      margin:0;
+      font-size:18px;
+      line-height:1.48;
+      letter-spacing:-.018em;
+    }
+    .pub p{
+      margin:7px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .badge{
+      display:inline-block;
+      margin-left:8px;
+      color:var(--accent);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      vertical-align:middle;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .skill-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      padding:22px;
+    }
+    .skill-card h3{
+      margin:0 0 12px;
+      font-size:15px;
+    }
+    .skill-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    footer{
+      padding:34px 0 0;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:180px 1fr; gap:34px}
+      .portrait{width:180px}
+      section{grid-template-columns:170px 1fr; gap:34px}
+      .metrics{grid-template-columns:repeat(3,1fr)}
+      .metric:nth-child(3){border-right:0}
+      .metric:nth-child(-n+3){border-bottom:1px solid var(--line)}
+      .metric:nth-child(4){padding-left:0}
+    }
+
+    @media (max-width:680px){
+      .container{width:min(calc(100% - 28px), var(--max))}
+      .nav{height:60px}
+      .nav-links a:not(.keep){display:none}
+      .hero{
+        grid-template-columns:1fr;
+        gap:28px;
+        padding:48px 0;
+      }
+      .portrait{
+        width:132px;
+        aspect-ratio:1 / 1;
+        border-radius:50%;
+        object-position:center 12%;
+      }
+      h1{font-size:48px}
+      .metrics{grid-template-columns:repeat(2,1fr)}
+      .metric{
+        border-bottom:1px solid var(--line);
+        padding:22px 14px;
+      }
+      .metric:nth-child(odd){padding-left:0}
+      .metric:nth-child(even){border-right:0}
+      .metric:last-child{grid-column:1 / -1; border-bottom:0; padding-left:0}
+      section{
+        grid-template-columns:1fr;
+        gap:26px;
+        padding:48px 0;
+      }
+      .section-label p{max-width:420px}
+      .item{grid-template-columns:1fr; gap:10px}
+      .pub{grid-template-columns:56px 1fr; gap:14px}
+      .skills-grid{grid-template-columns:1fr}
+      footer{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">JaeHyuk Son</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#patents">Patents</a>
+        <a href="#awards">Awards</a>
+        <a class="keep" href="mailto:sjh6415@naver.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <div class="hero">
+      <img class="portrait" src="profile.jpg" alt="Portrait of JaeHyuk Son" />
+      <div>
+        <p class="eyebrow">AI Research Engineer</p>
+        <h1>JaeHyuk Son</h1>
+        <p class="role">Biomedical Signal Processing · Computer Vision · Deep Learning</p>
+        <p class="intro">
+          M.S. candidate at Kwangwoon University. I develop AI systems that infer physiological
+          signals from facial videos and biosignals, with experience spanning research,
+          industry collaboration, product deployment, publications, patents, and GS certification.
+        </p>
+
+        <div class="contacts">
+          <a class="contact primary" href="mailto:sjh6415@naver.com">sjh6415@naver.com</a>
+          <a class="contact" href="tel:+821038926415">+82 10-3892-6415</a>
+          <a class="contact" href="https://github.com/sonjaehyuk98" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="contact" href="JaeHyuk_Son_CV.pdf" target="_blank">Download CV</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics" aria-label="Career highlights">
+      <div class="metric"><strong>5</strong><span>Publications</span></div>
+      <div class="metric"><strong>2</strong><span>Patent Applications</span></div>
+      <div class="metric"><strong>5</strong><span>Projects</span></div>
+      <div class="metric"><strong>3</strong><span>Awards</span></div>
+      <div class="metric"><strong>1</strong><span>GS-Certified Product</span></div>
+    </div>
+
+    <section id="education">
+      <div class="section-label">
+        <h2>Education</h2>
+        <p>Academic background and thesis.</p>
+      </div>
+      <div class="stack">
+        <article class="item">
+          <div class="meta"><b>2024 — 2026</b>Kwangwoon University</div>
+          <div>
+            <h3>M.S. in Electronic and Communication Engineering</h3>
+            <p>Expected August 2026</p>
+            <p><strong>Thesis:</strong> 생리학적 거리 기반 대조적 Forward-Forward 학습을 이용한 얼굴 영상 비접촉식 혈압 추정</p>
+          </div>
+        </article>
+        <article class="item">
+          <div class="meta"><b>2016 — 2023</b>Kwangwoon University</div>
+          <div>
+            <h3>B.S. in Electronic and Communication Engineering</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-label">
+        <h2>Project Experience</h2>
+        <p>Industry and applied AI projects completed through the laboratory and external programs.</p>
+      </div>
+      <div class="stack">
+
+        <article class="item">
+          <div class="meta"><b>2024 — 2026</b>CUDO Communication</div>
+          <div>
+            <h3>AI Vital Sign Kiosk for Contactless Health Monitoring</h3>
+            <p>
+              Developed and serviced a kiosk product that estimates multiple physiological signals
+              from facial videos using computer vision and remote photoplethysmography.
+            </p>
+            <ul>
+              <li>Developed end-to-end pipelines for heart rate, respiration rate, stress index, SpO₂, and blood pressure estimation.</li>
+              <li>Improved model stability and inference logic for real-world kiosk environments.</li>
+              <li>Participated in product deployment and service operation.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">rPPG</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Signal Processing</span>
+              <span class="tag">Biomedical AI</span>
+            </div>
+            <div class="result">Outcome · GS (Good Software) Certification obtained</div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="meta"><b>Industry Project</b>Inopia Tech</div>
+          <div>
+            <h3>Arrhythmia Detection from Single-Lead ECG</h3>
+            <p>
+              Developed a deep learning model for detecting arrhythmias from single-lead ECG signals.
+            </p>
+            <div class="tags">
+              <span class="tag">ECG</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Biomedical Signal Processing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="meta"><b>Industry Project</b>Inopia Tech</div>
+          <div>
+            <h3>Mobile Application for Facial Video-Based Physiological Measurement</h3>
+            <p>
+              Developed an AI-powered mobile application service that estimates physiological indicators from facial videos.
+            </p>
+            <div class="tags">
+              <span class="tag">Mobile AI</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">rPPG</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="meta"><b>2023</b>Goorm AI Bootcamp</div>
+          <div>
+            <h3>BERT-Based Fake News Detection and Chatbot Service</h3>
+            <p>
+              Built a BERT-based fake news detection model and integrated it into an interactive chatbot service
+              during a government-funded AI training program.
+            </p>
+            <div class="tags">
+              <span class="tag">BERT</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Chatbot</span>
+            </div>
+            <div class="result">Outcome · Outstanding Project Award</div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="meta"><b>2021</b>AI Project</div>
+          <div>
+            <h3>Korean Dialogue-Based Violence and Non-Violence Recognition</h3>
+            <p>
+              Participated in BERT-based Korean dialogue classification and collected Korean conversational speech data.
+            </p>
+            <div class="tags">
+              <span class="tag">BERT</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Data Collection</span>
+            </div>
+            <div class="result">Outcome · Project Award</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-label">
+        <h2>Publications</h2>
+        <p>International and domestic conference papers.</p>
+      </div>
+      <div>
+        <article class="pub">
+          <div class="year">2026</div>
+          <div>
+            <h3>Non-Contact Blood Pressure Estimation from Face Videos via Physiology-Aware Contrastive Learning <span class="badge">First Author</span></h3>
+            <p>IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2026 · Accepted</p>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="year">2026</div>
+          <div>
+            <h3>Physiology-Aware Multi-Branch Network for Fully Contactless Blood Pressure Estimation via Facial Remote Pulse Transit Time <span class="badge">Co-Author</span></h3>
+            <p>International Joint Conference on Neural Networks (IJCNN), 2026</p>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="year">2025</div>
+          <div>
+            <h3>Dual-Path Periodic Transformer for Enhancing rPPG Estimation <span class="badge">First Author</span></h3>
+            <p>International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC), 2025</p>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="year">2024</div>
+          <div>
+            <h3>얼굴 영상의 시공간 정보 활용 Transformer 기반 비접촉식 심박수 추정 기법 <span class="badge">First Author</span></h3>
+            <p>대한전자공학회 학술대회, 2024</p>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="year">2026</div>
+          <div>
+            <h3>Mamba 기반 생리학적 특징 어텐션 프레임워크를 활용한 원격광용적맥파 기반 혈압 추정 <span class="badge">First Author</span></h3>
+            <p>대한전자공학회 학술대회, 2026</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="patents">
+      <div class="section-label">
+        <h2>Patents</h2>
+        <p>Korean patent applications in contactless physiological measurement.</p>
+      </div>
+      <div>
+        <article class="pub">
+          <div class="year">2026</div>
+          <div>
+            <h3>생리학적 정보를 반영한 대조 학습 기반 얼굴영상에서의 비접촉 혈압 추정 방법</h3>
+            <p>최영석, 손재혁 · Korean Patent Application No. 10-2026-0006441</p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="year">2024</div>
+          <div>
+            <h3>얼굴 영상의 시공간 정보 활용 Transformer 기반 비접촉식 심박수 추정 시스템</h3>
+            <p>최영석, 손재혁 · Korean Patent Application No. 10-2024-0165318</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="section-label">
+        <h2>Honors & Awards</h2>
+        <p>Awards from research presentations and AI development projects.</p>
+      </div>
+      <div>
+        <article class="pub">
+          <div class="year">2024</div>
+          <div>
+            <h3>Outstanding Poster Paper Award</h3>
+            <p>“노년층 발화 음성 다중모달 그래프 표현학습 기반 감정 인식” · KOSOMBE Spring Conference</p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="year">2023</div>
+          <div>
+            <h3>Outstanding Project Award</h3>
+            <p>BERT-Based Fake News Detection and Chatbot Service · Goorm AI Bootcamp</p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="year">2021</div>
+          <div>
+            <h3>Project Award</h3>
+            <p>한국어 대화 기반 폭력 및 비폭력 상황 인식</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-label">
+        <h2>Technical Skills</h2>
+        <p>Core tools and research areas.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Programming & Frameworks</h3>
+          <p>Python, PyTorch, CUDA, Git, OpenCV, LaTeX</p>
+        </div>
+        <div class="skill-card">
+          <h3>AI & Modeling</h3>
+          <p>CNN, Transformer, Mamba, Contrastive Learning, Representation Learning</p>
+        </div>
+        <div class="skill-card">
+          <h3>Biomedical AI</h3>
+          <p>rPPG, ECG, Physiological Signal Processing, Blood Pressure Estimation</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 JaeHyuk Son</span>
+      <span>AI Research Engineer · Seoul, Republic of Korea</span>
+    </footer>
+  </main>
+</body>
+</html>
